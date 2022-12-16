@@ -3,6 +3,11 @@ import { Notification } from '@application/entities/notification';
 import { Content } from '@application/entities/content';
 
 export class PrismaNotificationMapper {
+  /**
+   * Conversão para camada de persistência
+   * @param notification
+   * @returns
+   */
   static toPrisma(notification: Notification) {
     return {
       id: notification.id,
@@ -15,6 +20,11 @@ export class PrismaNotificationMapper {
     };
   }
 
+  /**
+   * Conversão para camada de domínio
+   * @param raw
+   * @returns
+   */
   static toDomain(raw: RawNotification) {
     return new Notification(
       {
