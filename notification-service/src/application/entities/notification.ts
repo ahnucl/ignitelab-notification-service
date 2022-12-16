@@ -53,12 +53,16 @@ export class Notification {
     return this.props.category;
   }
 
-  public set readAt(readAt: Date | null | undefined) {
-    if (readAt === undefined) {
-      throw new Error('invalid value');
+  public read() {
+    this.props.readAt = new Date();
+  }
+
+  public unread() {
+    if (this.props.readAt === undefined) {
+      throw new Error('Notification was never read.');
     }
 
-    this.props.readAt = readAt;
+    this.props.readAt = null;
   }
 
   public get readAt(): Date | null | undefined {
